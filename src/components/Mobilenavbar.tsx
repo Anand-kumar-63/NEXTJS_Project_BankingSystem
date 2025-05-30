@@ -10,7 +10,6 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import Image from "next/image";
-import { Section } from "lucide-react";
 import Sidebar from "./Sidebar";
 import { sidebarLinks } from "@/constants";
 import { cn } from "@/lib/utils";
@@ -33,7 +32,7 @@ const Mobilenavbar = ({ user }: MobileNavProps) => {
         <SheetContent side="left" className="md:w-[400px] sm:w-[320px] max-w-[320px]">
           <SheetHeader>
             <SheetTitle></SheetTitle>
-            <SheetClose asChild>
+             <SheetClose asChild>
               <nav className="flex flex-row items-center justify-center gap-2 cursor-pointer">
                 <Image
                 

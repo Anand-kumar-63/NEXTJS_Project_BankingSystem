@@ -5,7 +5,8 @@ import BankCard from "./BankCard";
 import Category from "./Category";
 import { countTransactionCategories } from "@/lib/utils";
 const RightSidebar = ({ user, banks, transactions }: RightSidebarProps) => {
-
+       
+  
    const categories: CategoryCount[] = countTransactionCategories(transactions);
 
   return (
@@ -16,7 +17,7 @@ const RightSidebar = ({ user, banks, transactions }: RightSidebarProps) => {
             <Link href="/profile">
               <div className="flex justify-center items-center absolute top-22 size-20 rounded-full bg-gray-100 border-8 border-white p-1">
                 <span className="text-blue-400 text-5xl">
-                  {user.firstName[0]}
+                  {user.name[0]}
                 </span>
               </div>
             </Link>
