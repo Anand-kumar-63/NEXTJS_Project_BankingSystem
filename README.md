@@ -147,7 +147,7 @@ What is an Appwrite Client?
 
 import { Client, Account } from 'appwrite';
 const client = new Client()
-  .setEndpoint('https://cloud.appwrite.io/v1')  // Appwrite server project need to connnect with
+  .setEndpoint('https://cloud.appwrite.io/v1')  // Appwrite server url- project need to connnect with
   .setProject('projectID');                     // Your Appwrite project
 const account = new Account(client);
 
@@ -166,18 +166,17 @@ They all need to know:
 Where the Appwrite server is // location or you can say url of appwrite server
 Which project to act within  // appwrite project
 Which authentication token to use (if any) 
+
 [Important]
 ## problem with sign-in cookie is not being set exlicitly 
 export async function signIn(userData: signInProps) 
 {
   try {
- 
     // const { account } = await createAdminClient();
     // const response = await account.createEmailPasswordSession(
     //   userData.email,
     //   userData.password
     // );
-
     // you have to explicitly set seesion-cookie in the browser without this cookie will not be setup 
     // (await cookies()).set("appwrite-session", response.secret, {
     //   path: "/",
@@ -218,15 +217,11 @@ Appwrite detects it's a browser and sets the cookie	✅
 
 In this case, Appwrite sends back a Set-Cookie header (with a_session_<project_id>), and the browser stores it.
 
-
 ❌ When They Don’t Work:
 Reason	Why it Fails
 Using setKey(...)	You're using the admin API, not the user session flow
 Request comes from server	There's no browser context, so cookies can't be set
 You manually try to set sessionId as a cookie	Appwrite doesn't accept it unless it's in their exact format with the correct name/path/domain
-
-
-
 
 ## why
 ❓Why are you using createAdminClient() in signIn()?
@@ -266,7 +261,9 @@ For frontend:
 const client = new Client()
   .setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT)
   .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT);
+
 const account = new Account(client);
+
 await account.createEmailPasswordSession(email, password);
 
 Appwrite will set a session cookie in the browser. Ultimately we are going to get the session.

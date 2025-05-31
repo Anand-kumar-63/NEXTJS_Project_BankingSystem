@@ -6,7 +6,6 @@ import Category from "./Category";
 import { countTransactionCategories } from "@/lib/utils";
 const RightSidebar = ({ user, banks, transactions }: RightSidebarProps) => {
        
-  
    const categories: CategoryCount[] = countTransactionCategories(transactions);
 
   return (
@@ -26,8 +25,8 @@ const RightSidebar = ({ user, banks, transactions }: RightSidebarProps) => {
 
         <div>
           <h1 className="text-gray-700 mt-12 ml-4">
-            {user.firstName}
-            {user.lastName}
+            {user.name}
+            {user.name}
           </h1>
           <p className="text-gray-500 ml-4 text-sm">{user.email}.pro</p>
         </div>
@@ -54,7 +53,7 @@ const RightSidebar = ({ user, banks, transactions }: RightSidebarProps) => {
                 <BankCard
                   key={banks[0].$id}
                   account={banks[0]}
-                  userName={`${user.firstName} ${user.lastName}`}
+                  userName={`${user.name}`}
                   showBalance={false}
                 />
               </div>
@@ -63,7 +62,7 @@ const RightSidebar = ({ user, banks, transactions }: RightSidebarProps) => {
                   <BankCard
                     key={banks[0].$id}
                     account={banks[1]}
-                    userName={`${user.firstName} ${user.lastName}`}
+                    userName={`${user.name}`}
                     showBalance={false}
                   />
                 </div>

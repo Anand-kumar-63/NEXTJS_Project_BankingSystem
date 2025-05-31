@@ -5,7 +5,7 @@ import React from 'react'
 const page = () => {
   getLoggedInUser();
   return (
-    <div>
+    <div className='w-1/2'>
    <AuthForm type='sign-up' />
    </div>
   )

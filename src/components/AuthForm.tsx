@@ -19,7 +19,7 @@ import {
 import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import Custominputform from "./Custominputform";
-import { authFormSchema } from "@/lib/utils";
+import { authFormSchema, cn } from "@/lib/utils";
 import { signIn, Signup } from "@/lib/actions/user.actions";
 
 
@@ -39,7 +39,6 @@ const AuthForm = ({ type }: { type: string }) => {
 
   const onSubmit = async (data: z.infer<typeof authSchema>) => {
     setIsLoading(true);
-
     try {
       if (type === "sign-up") {
         const userData = {
@@ -57,13 +56,13 @@ const AuthForm = ({ type }: { type: string }) => {
         const newUser = await Signup(userData);
         setuser(newUser);
       }
-
       if (type === "sign-in") {
         const response = await signIn({
           email: data.email,
           password: data.password,
         });
-        if (response) router.push("/home");
+        if (response) {
+          router.push("/home");}
       }
     } catch (error) {
       console.log(error);
@@ -74,10 +73,10 @@ const AuthForm = ({ type }: { type: string }) => {
   };
 
   return (
-    <section className="w-full h-screen">
-      <div className="w-1/2 border-r-2 flex flex-col justify-center items-center mb-10 h-screen">
-        <header className="m-4 flex flex-col mt-6 ml-10">
-          <div className="flex flex-row gap-2">
+    <section className="w-full h-screen bg-white">
+      <div className="w-full flex flex-col justify-center items-center mb-10 h-screen">
+        <header className="m-4 flex flex-col mt-6 items-center">
+          <div className="flex flex-row gap-2 items-center justify-center">
             <Link href={"/home"}>
               <Image
                 src={"/icons/logo.svg"}
@@ -88,8 +87,8 @@ const AuthForm = ({ type }: { type: string }) => {
               <h1>Horizon</h1>
             </Link>
           </div>
-          <div className="flex flex-col">
-            <h1 className="text-xl ">
+          <div className="flex flex-col items-center">
+            <h1 className="text-xl">
               {user
                 ? "Link your Account"
                 : type === "sign-in"
@@ -111,7 +110,7 @@ const AuthForm = ({ type }: { type: string }) => {
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
-                className="w-auto space-y-1"
+                className={cn('w-120',type=='sign-in'&&'w-70')}
               >
                 {type === "sign-up" && (
                   <>
@@ -186,7 +185,7 @@ const AuthForm = ({ type }: { type: string }) => {
                   control={form.control}
                 />
 
-                <div className="flex flex-col gap-4">
+                <div className={cn("flex flex-col gap-4",type=='sign-in'&& "ml-15 w-1/2")}>
                   <Button type="submit" disabled={IsLoading}>
                     {IsLoading ? (
                       <>

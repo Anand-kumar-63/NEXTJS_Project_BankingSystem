@@ -4,7 +4,9 @@ import Totalbalancebox from "@/components/Totalbalancebox";
 import RightSidebar from "@/components/RightSidebar";
 import { Section } from "lucide-react";
 import { getLoggedInUser } from "@/lib/actions/user.actions";
+
 const page = async() => {
+  
   const loggedinuser = await getLoggedInUser();
   
   const Accounttopass = [{

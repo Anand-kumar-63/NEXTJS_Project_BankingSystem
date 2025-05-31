@@ -12,7 +12,7 @@ const BankCard = ({ userName, showBalance, account }: CreditCardProps) => {
         <div className="relative w-[75%] h-[100%] rounded-l-2xl bg-linear-to-r from-blue-400 to-blue-500  border-b-1 border-white" >
           <div className="flex flex-row justify-between ">
             <h1 className="m-2 text-sm text-bold mt-2 text-black text-white">
-              {account.name}
+              {userName}
             </h1>
             <p className="m-2 text-sm text-bold text-white mt-2">
               {account.currentBalance}
@@ -22,7 +22,7 @@ const BankCard = ({ userName, showBalance, account }: CreditCardProps) => {
           <article className="mt-12">
             <div className="flex flex-row justify-between ml-2">
               <h1 className="text-sm text-white">{userName}</h1>
-              <h1 className="text-sm mr-1 text-white"> ●● / ●●</h1>
+              <h1 className="text-sm mr-1 text-white"> 23 / 32</h1>
             </div>
             <div className="ml-2 mt-1">
               <h1 className="text-sm text-white"> ●●●● / ●●●● / ●●●●</h1>
@@ -42,15 +42,6 @@ const BankCard = ({ userName, showBalance, account }: CreditCardProps) => {
               className="ml-2 mb-2"
             />
         </div>
-
-        {/* <Image
-          src={"/icons/lines.png"}
-          width={316}
-          height={190}
-          alt="lines"
-          className="absolute top-0 left-0"
-        /> */}
-        
       </Link>
     </div>
   );

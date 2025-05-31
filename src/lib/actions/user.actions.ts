@@ -9,29 +9,26 @@ import { parse } from "path";
 export async function signIn(userData: signInProps) {
   try {
   // you have to explicitly set cookie in the browser
-    // const { account } = await createAdminClient();
-    // const response = await account.createEmailPasswordSession(
-    //   userData.email,
-    //   userData.password
-    // );
-    // (await cookies()).set("appwrite-session", response.secret, {
-    //   path: "/",
-    //   httpOnly: true,
-    //   sameSite: "strict",
-    //   secure: true,
-    // });
+    const { account } = await createAdminClient();
+    const response = await account.createEmailPasswordSession(
+      userData.email,
+      userData.password
+    );
+    (await cookies()).set("appwrite-session", response.secret, {
+      path: "/",
+      httpOnly: true,
+      sameSite: "strict",
+      secure: true,
+    });
+    return parseStringify(response);
+    //Appwrite will set a session cookie in the browser.
+    // const client = new Client().setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT!)
+    // .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT!)
+
+    // const account = new Account(client);
+    // const response = await account.createEmailPasswordSession(userData.email, userData.password);
     // return parseStringify(response);
 
-
-    //Appwrite will set a session cookie in the browser.
-    const client = new Client().setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT!)
-    .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT!)
-
-    const account = new Account(client);
-    const response = await account.createEmailPasswordSession(userData.email, userData.password);
-    return parseStringify(response)
-
-  
   } catch (error) {
     console.error("Error in sign-in:", error);
   }
@@ -41,7 +38,7 @@ export async function getLoggedInUser() {
   try {
     const { account } = await createSessionClient();
     const user = await account.get();
-    return parseStringify(user);
+    return parseStringify(user || null);
   } catch (error) {
     return error;
   }
@@ -74,11 +71,13 @@ export async function Signup(userData: SignUpParams) {
 }
 
 export async function LogoutAccount() {
-  try{
-const {account} = await createSessionClient();
-
-
-  }catch(error){
-    return null;
+  try
+  {
+  const {account} = await createSessionClient();
+  (await cookies()).delete("appwrite-session");
+  await account.deleteSession('current');
+  }
+  catch(error){
+    return error;
   }
 }

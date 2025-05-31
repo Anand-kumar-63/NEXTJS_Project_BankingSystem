@@ -6,10 +6,15 @@ import Image from "next/image";
 import { sidebarLinks } from "@/constants";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import Footer from "./Footer";
+const Sidebar = ({user}:SiderbarProps) => {
 
-const Sidebar = () => {
+
+  
+
   return (
     <section className="sticky left-0 top-0 flex h-screen w-[230px] flex-col items-center gap-2 border-r border-gray-200 bg-white pt-8 text-white max-md:hidden sm:p-4 xl:p-3 2xl:w-[355px]">
+     
       <nav className="mt-2 mx-4">
         <Link href="/">
         <Image
@@ -22,6 +27,7 @@ const Sidebar = () => {
           <h2 className="text-xl text-blue-500">Horizon</h2>
         </Link>
       </nav>
+     
       {sidebarLinks.map((items) => {
         const pathname = usePathname();
         const isActive = pathname == items.route;
@@ -39,6 +45,11 @@ const Sidebar = () => {
           </Link>
         );
       })}
+      
+
+      <footer className="mt-60">
+        <Footer user={user}/>
+      </footer>
     </section>
   );
 };
