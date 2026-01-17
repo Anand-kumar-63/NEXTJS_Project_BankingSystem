@@ -8,7 +8,7 @@ const AnimationCounter = ({ amount }:{amount:number}) => {
       end={amount}
       duration={4}
       separator=","
-      decimals={0}
+      decimals={2}
       decimal=","
       prefix="$"
     ></CountUp>

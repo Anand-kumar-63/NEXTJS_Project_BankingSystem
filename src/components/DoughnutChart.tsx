@@ -10,12 +10,14 @@ const DoughnutChart = ({accounts}:DoughnutChartProps) => {
     datasets:[
       {
         label:"Banks",
-        data:[123,234,1000],
-        backgroundColor: ['#0747b6', '#2265d8', '#2f91fa'] 
+        data:accounts.map(item=>(item.currentBalance)),
+        backgroundColor: ['#2f91fa','#0747b6', '#2265d8'] 
       }
     ],
-    labels:["bank1" , 'bank2' , "bank2"],
+    labels:accounts.map(item=>(item.name)),
   }
+
+
   return (
     <Doughnut data={data} 
      options={{

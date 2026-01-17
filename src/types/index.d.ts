@@ -153,7 +153,7 @@ declare interface HeaderBoxProps {
   type?: "title" | "greeting";
   title: string;
   subtext: string;
-  user?: string;
+  user: string;
 }
 
 declare interface MobileNavProps {
@@ -257,7 +257,7 @@ declare interface PaymentTransferFormProps {
 
 // Actions
 declare interface getAccountsProps {
-  userId: string;
+  DocumentId: string;
 }
 
 declare interface getAccountProps {
@@ -316,8 +316,8 @@ declare interface createBankAccountProps {
   sharableId: string;
 }
 
-declare interface getBanksProps {
-  userId: string;
+declare interface   getBanksProps {
+  DocumentId: string;
 }
 
 declare interface getBankProps {

@@ -21,10 +21,11 @@ import { useRouter } from "next/navigation";
 import Custominputform from "./Custominputform";
 import { authFormSchema, cn } from "@/lib/utils";
 import { signIn, Signup } from "@/lib/actions/user.actions";
+import PlaidLink from "./PlaidLink";
 
 
 const AuthForm = ({ type }: { type: string }) => {
-  const [user, setuser] = useState(null);
+  const [user, setuser] = useState<User | null>(null);
   const [IsLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
@@ -32,8 +33,16 @@ const AuthForm = ({ type }: { type: string }) => {
   const form = useForm<z.infer<typeof authSchema>>({
     resolver: zodResolver(authSchema),
     defaultValues: {
-      firstName: "",
-      email: "",
+      firstName: "Adreian",
+      email: "Adreian@gmail.com",
+      lastName: "Marker",
+      address1:"US texas",
+      city: "MY",
+      state: "TX",
+      postalCode: "12465",
+      dateOfBirth: "2000-09-08",
+      ssn: "1253",
+      password:"Adreian@131974",
     },
   });
 
@@ -53,7 +62,7 @@ const AuthForm = ({ type }: { type: string }) => {
           email: data.email,
           password: data.password,
         };
-        const newUser = await Signup(userData);
+        const newUser: User = await Signup(userData);
         setuser(newUser);
       }
       if (type === "sign-in") {
@@ -102,11 +111,11 @@ const AuthForm = ({ type }: { type: string }) => {
             </p>
           </div>
         </header>
-
         <div className="m-4">
-          {user ? (
-            <div>You are already loggedin</div>
-          ) : (
+          {user ? (      
+          <PlaidLink variant="primary" user={user} />
+          // dwollaCustomerId={user.dwollaCustomerId}
+          ) : ( 
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
@@ -201,7 +210,7 @@ const AuthForm = ({ type }: { type: string }) => {
                 </div>
               </form>
             </Form>
-          )}
+           )}
         </div>
 
         <footer className="flex flex-row mb-6 justify-center items-center">

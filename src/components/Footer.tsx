@@ -14,11 +14,11 @@ const Footer = ({user}:FooterProps) => {
   return (
     <div className="flex flex-row items-center gap-2 border-1 p-3 h-full ">
       <div className="p-2 shadow-xl rounded-full border-8 ">
-        <p className="text-blue-600">{user.name[0]}</p>
+        <p className="text-blue-600">{user.firstName}</p>
       </div>
       <div className="flex flex-row items-center gap-1 h-full">
         <div className="pr-2">
-          <h1 className="text-black">{user.name}</h1>
+          <h1 className="text-black">{user.firstName}</h1>
           <p className="text-gray-600 text-sm">{user.email}</p>
         </div>
         <button
