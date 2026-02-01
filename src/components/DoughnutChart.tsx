@@ -16,9 +16,7 @@ const DoughnutChart = ({accounts}:DoughnutChartProps) => {
     ],
     labels:accounts.map(item=>(item.name)),
   }
-
-
-  return (
+return(
     <Doughnut data={data} 
      options={{
       maintainAspectRatio: false ,

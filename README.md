@@ -1,7 +1,6 @@
 # tailwind css in the pliugin of postcss(CSS processor that runs plugins on your stylesheets)
-
 ## postcss 
-PostCSS is not just a tool—it's a platform. Its main use is to process and transform your CSS using plugins, before it's delivered to the browser.
+- PostCSS is not just a tool—it's a platform.Its main use is to process and transform your CSS using plugins, before it's delivered to the browser.
 Optimizes CSS for Production
 
 ## 🔗 How are PostCSS and Tailwind connected?
@@ -14,7 +13,6 @@ Other PostCSS plugins (like [autoprefixer]) may also process it.
 The final CSS is bundled and served to your website.
 
 ## Your postcss.config.js looks like this:
-
 {module.exports = {
   plugins: {
     [tailwindcss]: {},
@@ -38,9 +36,8 @@ You're telling PostCSS:
 # server environment and client environment
 # cn
 A custom utility function to combine Tailwind class names
-
-Example
-- conditional classname
+Example:
+- Conditional classname
 const isActive = true;
 const className = cn('btn', isActive && 'btn-active');
 console.log(className); 
@@ -54,7 +51,6 @@ const className = cn(
   size === 'sm' && 'text-sm'
 );
 console.log(className); // "text-white text-lg"
-
 
 # sheet component from shadcn for sidebar appeared on clicking the hamburger icon
 use of sheetclose component to close the sideclass 
@@ -175,14 +171,15 @@ export async function signIn(userData: signInProps)
     //   userData.password
     // );
     // you have to explicitly set seesion-cookie in the browser without this cookie will not be setup 
-    // (await cookies()).set("appwrite-session", response.secret, {
+    // (
+         await cookies()).set("appwrite-session", response.secret, {
     //   path: "/",
     //   httpOnly: true,
     //   sameSite: "strict",
     //   secure: true,
     // });
-
-    // return parseStringify(response);}
+    // return parseStringify(response);
+    }
 }
 If you log in a user from the server using an API key (admin client) and call createEmailPasswordSession, no session cookie is set in the browser.
 Why?
@@ -530,4 +527,5 @@ The destinationFundingSourceUrl could be your app’s Dwolla Master account (or 
                 │
                 ▼
  [15] ACH Transfer processes in backend (1–3 days)
+
 

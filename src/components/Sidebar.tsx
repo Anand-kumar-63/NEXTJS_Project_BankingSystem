@@ -8,10 +8,6 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import Footer from "./Footer";
 const Sidebar = ({user}:SiderbarProps) => {
-
-
-  
-
   return (
     <section className="sticky left-0 top-0 flex h-screen w-[230px] flex-col items-center gap-2 border-r border-gray-200 bg-white pt-8 text-white max-md:hidden sm:p-4 xl:p-3 2xl:w-[355px]">
      

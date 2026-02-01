@@ -7,10 +7,8 @@ import { getAccounts } from "@/lib/actions/banks.actions";
 import { getAccount } from "@/lib/actions/banks.actions";
 import RecentTransaction from "@/components/RecentTransaction";
 
-const page = async({params:{id , page}}:SearchParamProps) => {
-
-const Currentpage = Number(page as String) || 1;
-
+const page = async({params:{ id , page}}:SearchParamProps) => {
+  const Currentpage = Number(page as string) || 1;
   // const Currentpage = Number(page as string) || 1
   const loggedinuser = await getLoggedInUser();
   // we are trying to get the all the accounts associated with the loggedinuser array[]
