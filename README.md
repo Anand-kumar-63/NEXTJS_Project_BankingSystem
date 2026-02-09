@@ -41,8 +41,8 @@ Example:
 const isActive = true;
 const className = cn('btn', isActive && 'btn-active');
 console.log(className); 
-<!-- If isActive is false, it will log: "btn" -->
 
+<!-- If isActive is false, it will log: "btn" -->
 - Dynamic Tailwind Class Composition
 const size = 'lg';
 const className = cn(
@@ -63,23 +63,23 @@ File	Purpose
 
 ## Structure Inside theme 
 theme: {
-  screens: {},          // Breakpoints
-  colors: {},           // Color palette
-  spacing: {},          // Margin, padding, gap, width/height
-  fontSize: {},         // Text sizes
-  fontFamily: {},       // Fonts
-  borderRadius: {},     // Rounded corners
-  backgroundImage: {},  // bg-[...]
-  boxShadow: {},        // Shadows
-  extend: {             // Extend defaults (recommended!)
+  screens:{},          //Breakpoints
+  colors:{},           //Color palette
+  spacing:{},          //Margin, padding, gap, width/height
+  fontSize:{},         //Text sizes
+  fontFamily:{},       //Fonts
+  borderRadius:{},     //Rounded corners
+  backgroundImage:{},  //bg-[...]
+  boxShadow:{},        //Shadows
+  extend:{             //Extend defaults (recommended!)
     // Your custom values go here
   },
 }
 - [extend]: Safely adds custom values without removing defaults
-theme: {
-  extend: {
-    colors: {
-      brand: '#1e40af',
+theme:{
+  extend:{
+    colors:{
+      brand:'#1e40af',
     },
   },
 } 
@@ -98,7 +98,7 @@ extend: {
     '84': '21rem',
     '96': '24rem',
   },
-}//
+}
 screens: {
   sm: '640px',
   md: '768px',
@@ -110,7 +110,6 @@ extend: {
     hero: "url('/images/hero.png')",
   },
 }//bg-hero
-
 ## Extend Existing Utilities
 Add to Tailwind’s built-in utilities without replacing them.
 module.exports = {
@@ -128,8 +127,7 @@ module.exports = {
     },
   },
 };
-//now you can use like spacing-128 bg-hero
-
+//now you can use like spacing-128 bg-hero  
 # What is Appwrite client:
 What is an Appwrite Client?
 - The Appwrite Client is the core object that connects your frontend or backend app to your Appwrite server. Think of it as your app's personal passport — it tells Appwrite:
@@ -137,7 +135,6 @@ What is an Appwrite Client?
 - Where to send requests
 - Whether you're using admin privileges or acting as a user
 - And what services (like Account, Databases, etc.) you're trying to access.
-
 import { Client, Account } from 'appwrite';
 const client = new Client()
   .setEndpoint('https://cloud.appwrite.io/v1')  // Appwrite server url- project need to connnect with
@@ -156,8 +153,8 @@ Storage → upload/download files
 Functions → trigger and run backend functions
 
 They all need to know:
-Where the Appwrite server is // location or you can say url of appwrite server
-Which project to act within  // appwrite project
+Where the Appwrite server is  // location or you can say url of appwrite server
+Which project to act within   // appwrite project
 Which authentication token to use (if any) 
 
 [Important]
@@ -354,6 +351,7 @@ API Route 1	  /api/create_link_token
 API Route 2	  /api/exchange_public_token
 
 React SDK	usePlaidLink to open Plaid Link UI
+
 ### 
 ✅ Answer: Plaid Automatically Calls onSuccess() with the public_token
 Behind the scenes:
@@ -389,7 +387,7 @@ This initializes the Plaid client using the configuration above.
 With this client object, you can now call Plaid’s backend APIs like:
 client.linkTokenCreate(...)
 client.itemPublicTokenExchange(...)
-client.transactionsGet(...)
+client.transactionsGet(...) 
 
 [readmore]https://chatgpt.com/c/683c129c-3240-8000-b546-ffebba8fc27d
 

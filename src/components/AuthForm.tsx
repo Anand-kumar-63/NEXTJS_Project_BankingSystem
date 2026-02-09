@@ -2,19 +2,12 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { boolean, z } from "zod";
+import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import {
   Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
 } from "@/components/ui/form";
 import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -23,13 +16,13 @@ import { authFormSchema, cn } from "@/lib/utils";
 import { signIn, Signup } from "@/lib/actions/user.actions";
 import PlaidLink from "./PlaidLink";
 
-
 const AuthForm = ({ type }: { type: string }) => {
   const [user, setuser] = useState<User | null>(null);
   const [IsLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   const authSchema = authFormSchema(type);
+  // define your form
   const form = useForm<z.infer<typeof authSchema>>({
     resolver: zodResolver(authSchema),
     defaultValues: {
@@ -46,7 +39,7 @@ const AuthForm = ({ type }: { type: string }) => {
     },
   });
 
-  const onSubmit = async (data: z.infer<typeof authSchema>) => {
+const onSubmit = async (data: z.infer<typeof authSchema>) => {
     setIsLoading(true);
     try {
       if (type === "sign-up") {
@@ -76,12 +69,11 @@ const AuthForm = ({ type }: { type: string }) => {
     } catch (error) {
       console.log(error);
     } finally {
+      // finally you have to set isloading to false
       setIsLoading(false);
-    }
-  
-  };
-
-  return (
+   }
+};
+return(
     <section className="w-full h-screen bg-white">
       <div className="w-full flex flex-col justify-center items-center mb-10 h-screen">
         <header className="m-4 flex flex-col mt-6 items-center">
@@ -183,7 +175,7 @@ const AuthForm = ({ type }: { type: string }) => {
                 )}
                 <Custominputform
                   label="email"
-                  placeholder="Email here"
+                  placeholder="Enter your Email here!"
                   name="email"
                   control={form.control}
                 />
@@ -193,7 +185,6 @@ const AuthForm = ({ type }: { type: string }) => {
                   name="password"
                   control={form.control}
                 />
-
                 <div className={cn("flex flex-col gap-4",type=='sign-in'&& "ml-15 w-1/2")}>
                   <Button type="submit" disabled={IsLoading}>
                     {IsLoading ? (
@@ -212,7 +203,6 @@ const AuthForm = ({ type }: { type: string }) => {
             </Form>
            )}
         </div>
-
         <footer className="flex flex-row mb-6 justify-center items-center">
           <p className="text-sm text-gray-600 font-mono">
             {type === "sign-in"
@@ -226,7 +216,6 @@ const AuthForm = ({ type }: { type: string }) => {
             {type === "sign-in" ? "sign-up" : "sign-in"}
           </Link>
         </footer>
-
       </div>
     </section>
   );

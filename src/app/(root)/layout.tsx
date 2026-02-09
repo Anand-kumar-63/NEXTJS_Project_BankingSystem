@@ -9,11 +9,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>){
-
   const loggedinuser1 = await getLoggedInUser();
-  // console.log(loggedinuser1)
-  // if(!loggedinuser1) redirect("/sign-in");
-
   return (
 <main className="flex flex-row h-screen w-full font-inter">
     <Sidebar user={loggedinuser1}/>
@@ -28,7 +24,6 @@ export default async function RootLayout({
       </div>
     {children}
     </div>
-   
 </main>
   );
 }

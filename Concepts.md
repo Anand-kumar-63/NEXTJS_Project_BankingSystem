@@ -1,3 +1,6 @@
+**Note**
+The core difference is where HTML is generated: SSR generates it on the server before response, CSR generates it inside the browser after JavaScript runs.
+
 # Server Side Rendering (SSR)
 Flow:
 Browser → Server: The browser sends a request for the webpage.
@@ -12,7 +15,7 @@ The user gets a fully rendered page immediately.
 Better for SEO and initial load performance.
 Server bears the rendering load.
 
-# 🖥️ Client Side Rendering (CSR)
+# Client Side Rendering (CSR)
 Flow:
 Browser → Server: The browser requests the webpage.
 Server → Browser: The server sends basic HTML (likely with a JavaScript bundle).
@@ -25,7 +28,6 @@ Rendering happens on the client (browser).
 Initial load is faster, but actual content takes longer to appear.
 Better for interactive apps, but not ideal for SEO.
 Client bears the rendering load.
-
 {Summary Table}
 Feature	                 SSR	                     CSR
 Where rendering happens	Server	                    Client (Browser)
